@@ -1,6 +1,8 @@
 <http://louiscklaw.github.io/radxa-e24c-share>
 <http://localhost:3000/radxa-e24c-share/docs/intro>
 
+<https://openwrt-nctu.gitbook.io/project/openwrt-hardware/hardware-spec>
+
 # Website
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
