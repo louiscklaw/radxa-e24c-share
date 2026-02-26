@@ -8,13 +8,13 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "My Site Update",
   tagline: "Dinosaurs are really cool",
-  url: "https://the-tatanka.github.io/",
-  baseUrl: "/github-pages-docusaurus-template/",
+  url: "https://louiscklaw.github.io/",
+  baseUrl: "/radxa-e24c-share/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "the-tatanka", // Usually your GitHub org/user name.
-  projectName: "github-pages-docusaurus-template", // Usually your repo name.
+  organizationName: "louislabs", // Usually your GitHub org/user name.
+  projectName: "radxa-e24c-share", // Usually your repo name.
   deploymentBranch: "gh-pages",
 
   presets: [
@@ -26,14 +26,12 @@ const config = {
           remarkPlugins: [require("mdx-mermaid")],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
+          editUrl: "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
+          editUrl: "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
