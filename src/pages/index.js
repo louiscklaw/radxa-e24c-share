@@ -11,13 +11,10 @@ function HomepageHeader() {
   return (
     <div class={clsx("hero hero--dark", styles.heroBackground)}>
       <div class="container">
-        <h1 class="hero__title">Hero Title</h1>
-        <p class="hero__subtitle">Not all heroes wear capes</p>
+        <h1 class="hero__title">Radxa E24C</h1>
+        <p class="hero__subtitle">這裡放一些我對 radxa e24c 的個人心得</p>
         <div>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
+          <Link className="button button--secondary button--lg" to="/docs/intro">
             Get Started
           </Link>
         </div>
@@ -29,10 +26,7 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
+    <Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -2,56 +2,163 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# OpenWRT: WiFi 網路的開放平台
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## 什麼是 OpenWRT ?
 
-## Getting Started
+OpenWRT 是一個 Linux 為基礎的作業系統。
 
-Get started by **creating a new site**.
+在 WiFi 一開始發展時，基本的架構就是一個微處理器，搭配 WiFi 的處理晶片。
+此時，WiFi AP 還是嵌入式系統 (如: VxWorks) 的 RTOS 架構進行運算。
+直到 2003 年 Linksys 推出了 WRT-54G 這台 WiFi AP (通訊規格為 802.11g)，考慮到成本，以 Linux 作為其作業系統。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+由於 Linux 開源散佈的特性，該作業系統也被要求開源發布，也就成為 OpenWRT 的前身。
+在 OpenWRT 推出後，震撼了消費型的 WiFi AP 市場。
+許多開源的工程師發現，這套作業系統可以用便宜的硬體，完成舉多高階AP的功能 (如:DHCP)，也因此，OpenWRT 也就成為開發 WiFi AP 開放平台的主流。
 
-### What you'll need
+Linksys 也是一家有趣的公司，其創辦人 #曹英偉 先生與 #吳建 女士 皆來自台灣。
+該公司一開始的目標即為消費性的 WiFi AP，並以低廉的價格，成功搶下 Cisco 的市占，成為美國消費性 WiFi AP 的龍頭。
+後來，為了拓展全世界的市場，被 Cisco 買下，十年後又轉手於 Belkin。
+在 2018 年鴻準收購 Belkin 後，成為鴻海旗下品牌。是跟台灣連結很深的一家網通品牌。
 
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+![Linksys WRT-54G (來自Wiki)](https://2123799480-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LNYz37Gb_OI9VBKgqqt%2F-LNeE4RFl67SnA1TA3HM%2F-LNeFTzZ-ekvkP1bXUTZ%2FLinksys_WRT54G_V1.jpg?alt=media\&token=1c16e724-52fb-4c0e-a570-338d5a88135d)
 
-## Generate a new site
+回歸 OpenWRT 的討論，考慮到 embeed linux 已經被廣泛驗證，同時，硬體的快速發展也讓內存 (RAM) 和運算 (CPU) 更便宜省電。
+因此，在過往 RTOS 帶來的好處，漸漸比不上開發的便利性，這些變化，一步步的將 OpenWRT 推向普及。
 
-Generate a new Docusaurus site using the **classic template**.
+事實上，當前的主流 WiFi 晶片商 (如: MTK, Qualcomm)，都會藉由 OpenWRT 作為其晶片組的開發公版，提供網通廠進行開發。
+這些測試公版除了基本網路功能的驗證外，也提供部分硬體加速功能 (如:NAT 硬體加速)。
+因此，廠商就可以花最小的力氣，修改公版，並提出自己的產品。
+OpenWRT 的出現，也讓白牌 WiFi AP 能夠更容易進入市場，甚至有一些廠商 (例如: GL.iNet, 小米) 就是主打以 OpenWRT 的原生支援，提供使用者自由開發的 WiFi AP。
 
-The classic template will automatically be added to your project after you run the command:
+> 不過小米的 OpenWRT 並不在開放架構下，正確來說，小米的系統想要創建一個新的生態系，因此，連最基本的 OPKG 都不支援。
 
-```bash
-npm init docusaurus@latest my-website classic
+然而，由於 WiFi AP 始終不太像 android 地貼近使用者。
+因此，也尚未如 Android 一般，形成應用市集，而讓該作業系統蓬勃發展。
+目前 OpenWRT 仍停留在開發者的社群內，尚未普及至大眾。
+如何建構出多樣、而吸引人的網路應用，以及多 WiFi AP 間的共同溝通介面，會是 OpenWRT 走向普及的關鍵。
+
+## OpenWRT 的架構
+
+對於 OpenWRT 系統來說，最重要的功能就是提供網路通訊。
+而對於 WiFi AP 而言，網路一共分成兩個角色:
+
+1. 作為有線網路的路由器 (即係 router)
+2. 作為 WiFi 無線網路主控節點 (即係 AP)
+
+<!-- 已消化分隔線 -->
+
+<!-- 這段關乎 路由器 結構，需要重寫 -->
+> 而對應於 OpenWRT 的設定檔而言，則是對應於 network 和 wireless 兩個設定檔中。
+> 為了理解這兩個檔案的設定，我們要先理解硬體上的設定，我們以 TP-Link 1043 為例，其 CPU、 有線網路和無線網路的關聯性如下圖:
+
+> ![來自: https://openwrt.org/fr/toh/tp-link/tl-wr1043nd](https://2123799480-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LNYz37Gb_OI9VBKgqqt%2F-LNeHkDkEkhBk1PABFUh%2F-LNeInC9O8eydPgZ1gj0%2Ftl-wr1043nd-v2_schematics.png?alt=media\&token=7dd65448-b28a-4b8b-89d9-9415d5f0b37b)
+
+從上圖, 我們可以看到在 OpenWRT 的架構下，我們可以看到兩個主要的單元: Switch 和 CPU，對於 Switch 而言，又分成兩種角色:&#x20;
+
+1. 一種是 LAN 的連結埠 (對內網)，為 1, 2, 3, 4 port
+2. 一個為 WAN 的連結埠 (對外網)，為 5  port
+
+同時，有兩個虛擬的連結埠，分別為對應 CPU 運算資源的 0 port，以及 DHCP 的 6 port。
+至於 WiFi 網路則是歸屬於 CPU 的區塊，和 Switch 的 LAN 透過 br-lan 以及 port 0 連起來，因此， 若是以網路的角度來看， 一共有兩個網路。一個是 LAN 也就是圖上標示為 VLAN1 的部分，另一個則是 WAN, 也就是圖上標示為 VLAN2 的部分，而 config 中的 network 設定， 主要就是負責兩個 VLAN 的連結。
+
+在 OpenWRT 的預設設定中，`/etc/config/network` 的設定可以分成兩部分。
+
+第一部分是CPU那一端的設定檔:
+
+```
+config 'interface' 'loopback'
+       option 'ifname'   'lo'
+       option 'proto'    'static'
+       option 'ipaddr'   '127.0.0.1'
+       option 'netmask'  '255.0.0.0'
+>
+config 'interface' 'lan'
+        option 'ifname'   'eth0.1'
+        option 'type'     'bridge'
+        option 'proto'    'static'
+        option 'ipaddr'   '192.168.1.1'
+        option 'netmask'  '255.255.255.0'
+>
+config 'interface' 'wan'
+        option 'ifname' 'eth0.2'
+        option 'proto' 'dhcp'
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+在此部分，我們可以看到，對於 CPU 那一端的網路設定而言，除了 Linux 常見的 loopback 網路設定外，還有兩張網卡 (eth0.1 和 eth0.2)，分別對應於上圖內的 eth1 和 eth2，事實上, eth0.1 和 eth0.2 對應於同一張物理網卡，只是虛擬成兩張網卡使用。
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+第二部分為 switch 和 VLAN 的設定:
 
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+```
+config 'switch'
+        option 'name' 'rtl8366rb'
+        option 'reset' '1'
+        option 'enable_vlan' '1'
+>
+config 'switch_vlan'
+        option 'device' 'rtl8366rb'
+        option 'vlan' '1'
+        option 'ports' '1 2 3 4 5t'
+>
+config 'switch_vlan'
+        option 'device' 'rtl8366rb'
+        option 'vlan' '2'
+        option 'ports' '0 5t'
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+在對於 switch 的設定中，port 0 對應 WAN，port 1, 2, 3, 4 則對應於 LAN 的四個連接孔位，至於其中最特別的 5t，則是對應於 CPU 連線。詳細說明可以參考:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+![](https://2123799480-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LNYz37Gb_OI9VBKgqqt%2F-LNeR7z0ZkkrgHLVknIp%2F-LNeSaQVo1frbcHytutL%2Fasus-internals-default.png?alt=media\&token=5effde8f-21c5-4e37-9586-3c7882fd1a9f)
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+完成以上設定後，根據 ifconfig 可以得到以下資訊，包含在 `/etc/config/network` 中沒有出現的 br-lan。我們可以得到和上圖所呈現的架構一致:
 
-## Mermaid integration
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
 ```
+br-lan    Link encap:Ethernet  HWaddr F8:1A:67:CA:C3:08
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:454023 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:383797 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:32715386 (31.1 MiB)  TX bytes:109967909 (104.8 MiB)
+
+eth0      Link encap:Ethernet  HWaddr F8:1A:67:CA:C3:08
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:454143 errors:0 dropped:0 overruns:94127 frame:0
+          TX packets:709113 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:40899622 (39.0 MiB)  TX bytes:243905909 (232.6 MiB)
+          Interrupt:4
+
+eth0.1    Link encap:Ethernet  HWaddr F8:1A:67:CA:C3:08
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:454023 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:383797 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:34531478 (32.9 MiB)  TX bytes:111503097 (106.3 MiB)
+
+eth0.2    Link encap:Ethernet  HWaddr F8:1A:67:CA:C3:08
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:325311 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:132401577 (126.2 MiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:5441389 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:5441389 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:379240032 (361.6 MiB)  TX bytes:379240032 (361.6 MiB)
+```
+
+上述主要內容來自於 OpenWRT 的官方網站，考慮到不同裝置間的差異性，在設定上會有所不同，尤其是 network 的設定檔，這裡的設定一開始最好用預設的數值，任意更改可能會造成網路的失效，當如法順利透過 SSH 連進 OpenWRT 系統時，就很並更改設定了...
+
+## 資料來源
+
+以下是參考的資料來源:
+
+1. <https://openwrt.org/docs/guide-user/base-system/basic-networking>
+1. <https://wiki.openwrt.org/doc/uci/network>
+1. <https://wiki.openwrt.org/doc/techref/swconfig>
+1. <https://openwrt-nctu.gitbook.io/project>
