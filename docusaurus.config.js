@@ -78,14 +78,14 @@ const config = {
             // i want to add link redirector as the carousell user profile link may change
             // i want to create a repository to host the links
             //
-            href: "https://www.carousell.com.hk/u/louis_coding",
-            label: "Carousell",
+            href: "https://portfolio.louislabs.com/r/carousell_profile",
+            label: "carousell-profile",
             position: "right",
           },
 
           {
-            href: "https://www.carousell.com.hk/p/1411370150",
-            label: "Selling Radxa-E24c",
+            href: "https://portfolio.louislabs.com/r/my_selling",
+            label: "my-selling",
             position: "right",
           },
         ],
