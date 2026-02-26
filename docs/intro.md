@@ -50,7 +50,7 @@ OpenWRT 的出現，也讓白牌 WiFi AP 能夠更容易進入市場，甚至有
 
 <!-- 已消化分隔線 -->
 
-<!-- 這段關乎 路由器 結構，需要重寫 -->
+<!-- 這段關乎 路由器 結構，需要重寫
 > 而對應於 OpenWRT 的設定檔而言，則是對應於 network 和 wireless 兩個設定檔中。
 > 為了理解這兩個檔案的設定，我們要先理解硬體上的設定，我們以 TP-Link 1043 為例，其 CPU、 有線網路和無線網路的關聯性如下圖:
 
@@ -164,3 +164,4 @@ lo        Link encap:Local Loopback
 1. <https://wiki.openwrt.org/doc/uci/network>
 1. <https://wiki.openwrt.org/doc/techref/swconfig>
 1. <https://openwrt-nctu.gitbook.io/project>
+ -->
