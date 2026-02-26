@@ -12,7 +12,7 @@ const config = {
   baseUrl: "/radxa-e24c-share/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/avatar.jpg",
   organizationName: "louislabs", // Usually your GitHub org/user name.
   projectName: "radxa-e24c-share", // Usually your repo name.
   deploymentBranch: "gh-pages",
@@ -26,12 +26,12 @@ const config = {
           remarkPlugins: [require("mdx-mermaid")],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
+          editUrl: "https://github.com/louiscklaw/radxa-e24c-share/tree/master/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/the-tatanka/github-pages-docusaurus-template/tree/master/",
+          editUrl: "https://github.com/louiscklaw/radxa-e24c-share/tree/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -63,19 +63,29 @@ const config = {
         title: "My Site",
         logo: {
           alt: "My Site Logo",
-          src: "img/logo.svg",
+          src: "img/logo.jpg",
         },
         items: [
           {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Tutorial",
+            label: "My-Share 我的分享",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          // { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
+            // TODO: add link redirector here,
+            // i want to add link redirector as the carousell user profile link may change
+            // i want to create a repository to host the links
+            //
+            href: "https://www.carousell.com.hk/u/louis_coding",
+            label: "Carousell",
+            position: "right",
+          },
+
+          {
+            href: "https://www.carousell.com.hk/p/1411370150",
+            label: "Selling Radxa-E24c",
             position: "right",
           },
         ],
@@ -84,19 +94,19 @@ const config = {
         style: "dark",
         links: [
           {
-            label: "Tutorial",
+            label: "Share",
             to: "/docs/intro",
           },
-          {
-            label: "Blog",
-            to: "/blog",
-          },
+          // {
+          //   label: "Blog",
+          //   to: "/blog",
+          // },
           {
             label: "GitHub",
-            href: "https://github.com/the-tatanka/github-pages-docusaurus-template",
+            href: "https://github.com/louiscklaw/radxa-e24c-share",
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Site, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} louiscklaw. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
