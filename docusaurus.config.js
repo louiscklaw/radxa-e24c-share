@@ -78,12 +78,15 @@ const config = {
             // i want to add link redirector as the carousell user profile link may change
             // i want to create a repository to host the links
             //
+            // NOTE: using the link forwarder by my another repoisotry
+            //
             href: "https://portfolio.louislabs.com/r/carousell_profile",
             label: "carousell-profile",
             position: "right",
           },
-
           {
+            // NOTE: using the link forwarder by my another repoisotry
+            //
             href: "https://portfolio.louislabs.com/r/my_selling",
             label: "my-selling",
             position: "right",
