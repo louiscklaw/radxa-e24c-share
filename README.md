@@ -1,4 +1,5 @@
 <http://louiscklaw.github.io/radxa-e24c-share>
+<http://localhost:3000/radxa-e24c-share/docs/intro>
 
 # Website
 
