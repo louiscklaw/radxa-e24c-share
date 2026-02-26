@@ -23,7 +23,7 @@ Linksys 也是一家有趣的公司，其創辦人 #曹英偉 先生與 #吳建 
 
 ![Linksys WRT-54G (來自Wiki)](https://2123799480-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LNYz37Gb_OI9VBKgqqt%2F-LNeE4RFl67SnA1TA3HM%2F-LNeFTzZ-ekvkP1bXUTZ%2FLinksys_WRT54G_V1.jpg?alt=media\&token=1c16e724-52fb-4c0e-a570-338d5a88135d)
 
-![](./images/banner_radxa_e24c.webp)
+![radxa-e24c](./images/banner_radxa_e24c.webp)
 
 回歸 OpenWRT 的討論，考慮到 embeed linux 已經被廣泛驗證，同時，硬體的快速發展也讓內存 (RAM) 和運算 (CPU) 更便宜省電。
 因此，在過往 RTOS 帶來的好處，漸漸比不上開發的便利性，這些變化，一步步的將 OpenWRT 推向普及。
