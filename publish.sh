@@ -8,5 +8,7 @@ npm run build
 
 git commit -m'update publish,'
 
+git push
+
 echo "done"
 exit 0
