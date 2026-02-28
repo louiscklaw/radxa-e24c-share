@@ -1,5 +1,7 @@
 **/*.bak
 **/*.drawio
+**/*.prompt
+**/*:Zone.Identifier
 
 # Dependencies
 /node_modules
