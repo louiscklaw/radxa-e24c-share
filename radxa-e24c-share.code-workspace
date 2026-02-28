@@ -2,12 +2,19 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "/home/logic/_wsl_workspace/task-list/servers/radxa_e24c"
     }
   ],
   "settings": {
     "[mdx]": {
       "editor.formatOnSave": true,
       "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+    },
+    "[*.prompt]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "vscode.markdown-language-features"
     }
   },
   "extensions": {
