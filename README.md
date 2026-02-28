@@ -23,6 +23,8 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Publish
 
+to publish to github page, enter command below.
+
 ```bash
 ./publis.sh
 ```
