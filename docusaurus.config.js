@@ -109,7 +109,7 @@ const config = {
             href: "https://github.com/louiscklaw/radxa-e24c-share",
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} louiscklaw. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a style="color: white" href="https://portfolio.louislabs.com" target="blank">louiscklaw</a>. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
