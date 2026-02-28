@@ -3,5 +3,17 @@
     {
       "path": "."
     }
-  ]
+  ],
+  "settings": {
+    "[mdx]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "unifiedjs.vscode-mdx",
+      "hediet.vscode-drawio"
+    ]
+  }
 }
