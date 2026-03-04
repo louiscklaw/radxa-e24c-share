@@ -1,0 +1,68 @@
+---
+id: gost-go-simple-tunnel-透明代理
+title: GOST (GO Simple Tunnel) / 透明代理
+sidebar_position: 2
+tags:
+  - frps
+  - frpc
+  - socks5
+  - openwrt
+  - router
+  - 路由器
+---
+
+## 是什麽來的?
+
+**GO Simple Tunnel (GOST)** [^ref2] 係一個好簡單嘅 proxy，
+佢可以依照 url address，
+然後安排該 request 經指定 proxy route 出去。
+
+
+## 例子:
+
+### 例子1:
+
+我想將 gemini packet(s) route 去 DE 嘅 VPS (a.k.a. 用 DE 嘅 IP 扮係果度上網)
+其餘 packet(s) 仍然用我屋企現有 ISP。 (即係仍然用香港 IP)
+
+### 例子2:
+
+T.B.A. ...
+
+因為整個過程都係 router(openwrt) 入面進行，用戶唔需要係用戶端度做額外設定，
+所以叫 **透明代理** (**Transparent proxy**)[^ref1]。
+> (其實都唔係咩新野，個技術好耐架喇...)
+
+## 應用場景:
+
+> TODO: 例一兩個應用場景
+
+
+## 是我進行過的測試:
+
+- lab1: {/* show lab1 */}
+
+- lab2: {/* show lab2 */}
+
+- ...: {/* show ... */}
+
+- lab10: {/* show lab10 */}
+
+- lab11: {/* show lab11 */}
+
+
+<details>
+  <summary>
+    TODO: 填上所做過的測試, T.B.A.
+  </summary>
+
+  暫時存放於: `lab_source/gost_labs`
+</details>
+
+
+
+## 資料來源
+
+[^ref1]: <https://en.wikipedia.org/wiki/Proxy_server>.
+[^ref2]: <https://gost.run/en/>
+

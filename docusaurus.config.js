@@ -60,7 +60,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "My Site",
+        title: "louis share",
         logo: {
           alt: "My Site Logo",
           src: "img/logo.jpg",
@@ -70,25 +70,26 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "My-Share 我的分享",
+            label: "My-Note",
           },
           // { to: "/blog", label: "Blog", position: "left" },
+          // {
+          //   // TODO: add link redirector here,
+          //   // i want to add link redirector as the carousell user profile link may change
+          //   // i want to create a repository to host the links
+          //   //
+          //   // NOTE: using the link forwarder by my another repoisotry
+          //   //
+          //   href: "https://portfolio.louislabs.com/r/carousell_profile",
+          //   label: "carousell-profile",
+          //   position: "right",
+          // },
           {
-            // TODO: add link redirector here,
-            // i want to add link redirector as the carousell user profile link may change
-            // i want to create a repository to host the links
-            //
             // NOTE: using the link forwarder by my another repoisotry
             //
-            href: "https://portfolio.louislabs.com/r/carousell_profile",
-            label: "carousell-profile",
-            position: "right",
-          },
-          {
-            // NOTE: using the link forwarder by my another repoisotry
-            //
-            href: "https://portfolio.louislabs.com/r/my_selling",
-            label: "my-selling",
+            // href: "https://portfolio.louislabs.com/r/my_selling",
+            href: "https://www.carousell.com.hk/u/louis_coding/",
+            label: "My-selling",
             position: "right",
           },
         ],

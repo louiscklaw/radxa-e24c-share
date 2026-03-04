@@ -353,3 +353,51 @@
 [data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+/* customize below */
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+.footnotes {
+  font-size:0.9rem;
+  text-decoration: underline;
+}
+
+.footer {
+  font-size:0.8rem;
+}
+
+.footer__links{
+  margin-bottom: 0.5rem;
+}
+
+.FeatureHover:hover {
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+}
+
+.FeatureHover a:hover {
+  text-decoration: none;
+}
