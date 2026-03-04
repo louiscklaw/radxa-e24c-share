@@ -1,0 +1,31 @@
+services:
+  - name: service-0
+    addr: 10.0.20.3:12345
+    handler:
+      type: red
+      chain: chain-0
+      # TODO: clarify usage
+      metadata:
+        sniffing: true
+        # tproxy: true
+    listener:
+      type: red
+
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-1
+        nodes:
+          - name: node-0
+            # stormy-nannette-testhelloworld04-ab7297a1.koyeb.app
+            addr: 10.0.10.1:18080
+            # node level sockopts, will override hop level value.
+            sockopts:
+              mark: 100
+            connector:
+              type: http
+              auth:
+                username: user
+                password: pass
+            dialer:
+              type: tcp

@@ -1,0 +1,24 @@
+services:
+  - name: service-0
+    addr: :12345
+    handler:
+      type: red
+      chain: chain-0
+      metadata:
+        tproxy: true
+    listener:
+      type: red
+      metadata:
+        tproxy: true
+
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-0
+        nodes:
+          - name: node-0
+            addr: "10.0.10.1:8420"
+            connector:
+              type: relay
+            sockopts:
+              mark: 100

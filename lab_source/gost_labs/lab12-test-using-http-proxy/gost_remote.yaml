@@ -1,0 +1,11 @@
+# gost_remote.yaml
+services:
+  - name: service-0
+    addr: ":18080"
+    handler:
+      type: http
+      auth:
+        username: user
+        password: pass
+    listener:
+      type: tcp

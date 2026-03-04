@@ -1,0 +1,36 @@
+services:
+  - name: service-0
+    addr: 10.0.20.3:12345
+    handler:
+      type: red
+      chain: chain-0
+      # TODO: clarify usage
+      metadata:
+        sniffing: true
+        # tproxy: true
+    listener:
+      type: red
+    bypasses:
+      - bypass-1
+
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-1
+
+        nodes:
+          - name: node-0
+            addr: 10.0.30.1:8080
+            # node level sockopts, will override hop level value.
+            sockopts:
+              mark: 100
+            connector:
+              type: http
+            dialer:
+              type: tcp
+
+bypasses:
+  - name: bypass-1
+    whitelist: true
+    matchers:
+      - "10.0.30.2"

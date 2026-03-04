@@ -1,0 +1,40 @@
+services:
+  - name: service-0
+    addr: 10.0.20.3:12345
+    handler:
+      type: red
+      chain: chain-0
+      # TODO: clarify usage
+      metadata:
+        sniffing: true
+    listener:
+      type: red
+
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-0
+        bypasses:
+          - bypass-0
+          - bypass-1
+        nodes:
+          - name: node-0
+            addr: 10.0.10.1:8080
+            # node level sockopts, will override hop level value.
+            sockopts:
+              mark: 100
+            connector:
+              type: http
+            dialer:
+              type: tcp
+
+bypasses:
+  - name: bypass-0
+    whitelist: true
+    matchers:
+      - 172.10.0.0/16
+      - 10.0.10.1
+      - 127.0.0.1
+      - localhost
+      - "*.example.com"
+      - .example.org
